@@ -70,11 +70,6 @@
             innerSize.width = m.offsetWidth
             outerSize.height = pm.clientHeight
             outerSize.width = pm.clientWidth
-            //debug
-            //console.log(pm)
-            //console.log(outerSize.width)
-            //console.log(outerSize.height)
-            //debug
             pm.style.zoom="1"
             m.style.position="absolute"
             m.style.top=(outerSize.height-innerSize.height)/2+"px"
@@ -86,7 +81,6 @@
         case "MSIE7.0":
         case "MSIE8.0":
         case "MSIE9.0":
-            //setListener();break;
             setInterval(setListener,200);break;
         default :
             setTransform();break;
