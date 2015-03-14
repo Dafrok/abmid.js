@@ -42,9 +42,6 @@
     var getCss = function(o,key){
         return o.currentStyle ? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];
     }
-    var getSize=function(el,size){
-        return  parseFloat(getCss(el,size))
-    }
     var setTransform=function(){
         for(var abmid=0;abmid<abmids.length;abmid++){
             var m=abmids[abmid]
