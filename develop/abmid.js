@@ -2,7 +2,7 @@
  * Created by AMAI on 3/12/2015.
  */
 
-//polyfill-queryselector
+// polyfill-queryselector
 (function () {
     var style;
     var select = function (selector, maxCount) {
@@ -36,46 +36,50 @@
     };
 })();
 
-//Abmid
-(function Abmid(){
-    var abmids = document.querySelectorAll('[abmid]')
-    var getCss = function(o,key){
-        return o.currentStyle ? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];
-    }
-    var setTransform=function(){
-        for(var abmid=0;abmid<abmids.length;abmid++){
-            var m=abmids[abmid]
-            var pm= m.parentElement
-            if(getCss(pm,'position')=='static' && m.parentElement.tagName!='BODY'){
-                pm.style.position='relative'
+// Abmid
+(function () {
+    var getCss = function (o, key) {
+        return o.currentStyle ? o.currentStyle[key] : document.defaultView.getComputedStyle(o, false)[key];
+    };
+    var setTransform = function () {
+        var abmids = document.querySelectorAll('[abmid]');
+        for (var abmid = 0; abmid < abmids.length; abmid++) {
+            var m = abmids[abmid];
+            var pm = m.parentElement;
+            if (getCss(pm, 'position') === 'static' && m.parentElement.tagName != 'BODY') {
+                pm.style.position='relative';
             }
-            m.style.position='absolute'
-            m.style.top='50%'
-            m.style.left='50%'
-            m.style.transform='translate(-50%,-50%)'
+            m.style.position = 'absolute';
+            m.style.top = '50%';
+            m.style.left = '50%';
+            m.style.transform = 'translate(-50%,-50%)';
         }
-    }
-    var setListener=function(){
-        for(var abmid=0;abmid<abmids.length;abmid++){
-            var m=abmids[abmid]
-            var pm= m.parentElement
-            if(getCss(pm,'position')=='static' && m.parentElement.tagName!='BODY'){
-                pm.style.position='relative'
+    };
+    var setListener = function () {
+        var abmids = document.querySelectorAll('[abmid]');
+        for (var abmid = 0; abmid < abmids.length; abmid++) {
+            var m = abmids[abmid];
+            var pm = m.parentElement;
+            if (getCss(pm, 'position') === 'static' && m.parentElement.tagName != 'BODY') {
+                pm.style.position = 'relative';
             }
-            var innerSize=new Object(),outerSize=new Object()
-            innerSize.height = m.offsetHeight
-            innerSize.width = m.offsetWidth
-            outerSize.height = pm.clientHeight
-            outerSize.width = pm.clientWidth
-            pm.style.zoom='1'
-            m.style.position='absolute'
-            m.style.top=(outerSize.height-innerSize.height)/2+'px'
-            m.style.left=(outerSize.width-innerSize.width)/2+'px'
+            var innerSize = {
+                height: m.offsetHeight,
+                width: m.offsetWidth
+            };
+            var outerSize = {
+                height: m.clientHeight,
+                width: m.clientWidth
+            };
+            pm.style.zoom = '1';
+            m.style.position = 'absolute';
+            m.style.top = (outerSize.height - innerSize.height) / 2 + 'px';
+            m.style.left = (outerSize.width - innerSize.width) / 2 + 'px';
         }
-    }
+    };
 
     var el = document.createElement('div');
-    if ('transform' in el.style){
+    if ('transform' in el.style) {
         setTransform();
     } else {
         setInterval(setListener,16.7);
