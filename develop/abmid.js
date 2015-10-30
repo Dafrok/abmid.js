@@ -88,6 +88,6 @@
     if ('transform' in el.style) {
         setTransform();
     } else {
-        setInterval(setListener,16.7);
+        setInterval(setListener, 500);
     }
 })();
