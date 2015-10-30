@@ -63,14 +63,20 @@
             if (getCss(pm, 'position') === 'static' && m.parentElement.tagName != 'BODY') {
                 pm.style.position = 'relative';
             }
-            var innerSize = {
-                height: m.offsetHeight,
-                width: m.offsetWidth
-            };
-            var outerSize = {
-                height: m.clientHeight,
-                width: m.clientWidth
-            };
+            //var innerSize = {
+            //    height: m.offsetHeight,
+            //    width: m.offsetWidth
+            //};
+            //var outerSize = {
+            //    height: m.clientHeight,
+            //    width: m.clientWidth
+            //};
+            var innerSize = new Object();
+            var outerSize = new Object();
+            innerSize.height = m.offsetHeight;
+            innerSize.width = m.offsetWidth;
+            outerSize.height = pm.clientHeight;
+            outerSize.width = pm.clientWidth;
             pm.style.zoom = '1';
             m.style.position = 'absolute';
             m.style.top = (outerSize.height - innerSize.height) / 2 + 'px';
